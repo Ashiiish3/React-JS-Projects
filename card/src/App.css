@@ -1,0 +1,77 @@
+body {
+  background-color: rgba(94, 189, 0, 0.271);
+}
+.App{
+  width: 800px;
+  margin: 10% auto;
+}
+.card{
+  background-color: white;
+  box-shadow: 0px 0px 10px 2px rgb(189, 189, 189);
+}
+.card .cardHeader{
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  & span{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-transform: uppercase;
+  }
+  & .arrow{
+    font-size: 18px;
+    margin-top: 2px;
+  }
+  & .heart{
+    font-size: 28px;
+  }
+}
+.card .cardBody{
+  display: flex;
+}
+.card .cardBody .leftCard{
+  padding: 30px;
+  width: 50%;
+  border-top: 2px solid gray;
+  border-right: 1px solid gray;
+}
+.card .cardBody .leftCard img{
+  width: 100%;
+}
+.card .cardBody .cardInfo{
+  padding: 22px;
+  width: 50%;
+  border-top: 2px solid gray;
+  border-left: 1px solid gray;
+  & h1{
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0%;
+  }
+  & h6{
+    margin: 0%;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  & h3{
+    font-size: 30px;
+    margin-bottom: 0%;
+    margin-top: 15px;
+    font-weight: 500;
+  }
+}
+.card .card-button{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.card .card-button button{
+  background-color: transparent;
+  height: 40px;
+  width: 168px;
+  text-transform: uppercase;
+  font-size: 18px;
+}
