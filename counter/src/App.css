@@ -1,0 +1,16 @@
+.counter-box{
+  height: 400px;
+  width: 400px;
+  margin: 10% auto;
+  text-align: center;
+  border: 1px solid black;
+  padding: 40px 0px;
+}
+.counter-box button{
+  margin: 10px;
+}
+.counter-box .reset-button{
+  display: block;
+  margin: 10px auto;
+  width: 100px;
+}
