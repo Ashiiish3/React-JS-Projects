@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+}
+.counter-box{
+  background-color: bisque;
+  height: 400px;
+  width: 400px;
+  margin: 10% auto;
+  border: 2px solid black;
+  color: rgb(161, 27, 27);
+  padding: 40px 0px;
+}
+.counter-box h1{
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.counter-box button{
+  padding: 5px 8px;
+  border: 2px solid black;
+  font-weight: 500;
+  background-color: pink;
+}
+.counter-box span{
+  color: rgb(209, 58, 58);
+  font-weight: 700;
+}
