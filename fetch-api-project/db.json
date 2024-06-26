@@ -1,0 +1,32 @@
+{
+  "product": [
+    {
+      "id": "1",
+      "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/y/3/r/xl-gucci-teal-color-sti-original-imahyyzrfertshuc.jpeg?q=70",
+      "title": "Men Printed Round Neck Polyester Multicolor T-Shirt",
+      "category": "Fashion",
+      "price": 400
+    },
+    {
+      "id": "2",
+      "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/scooter-moped/p/n/a/-original-imagmgcgpechuh2y.jpeg?q=70",
+      "title": "Hero XOOM (LX) Booking for Ex-Showroom Price",
+      "category": "Wheeler",
+      "price": "74,286"
+    },
+    {
+      "id": "3",
+      "image": "https://rukminim2.flixcart.com/image/200/200/xif0q/mobile/m/p/y/12-pro-5g-rmx3842-realme-original-imagxgnhafyjz8rb.jpeg?q=70",
+      "title": "realme 12 pro",
+      "category": "Phone",
+      "price": "22,999"
+    },
+    {
+      "id": "4",
+      "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/v/x/p/6-hrx-087-01-hrx-by-hrithik-roshan-white-black-orange-original-imagtr5djpxg8sy7.jpeg?q=70",
+      "title": "HRX-087 01 Running Shoes For Men",
+      "category": "Men's Shoes",
+      "price": "2,099"
+    }
+  ]
+}
