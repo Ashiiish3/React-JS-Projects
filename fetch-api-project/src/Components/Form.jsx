@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-const Form = () => {
+const Form = ({getData}) => {
   let formObj = {
     image: "",
     title: "",
@@ -23,7 +23,8 @@ const Form = () => {
           category: formData.category,
           price: formData.price,
         });
-        console.log(response.data);
+        alert("Product has been Added.")
+        getData()
       } catch (error) {
         console.log(error);
       }
@@ -31,10 +32,10 @@ const Form = () => {
     PostData();
   };
   return (
-    <div>
-      <div>
+    <div className="form">
+      <div className="addProduct">
         <form onSubmit={(event) => FormSub(event)}>
-          <h4>Add Product</h4>
+          <h1>Add Product</h1>
           <input
             type="text"
             name="image"
@@ -69,6 +70,13 @@ const Form = () => {
           <br />
           <button>Add Product</button>
         </form>
+      </div>
+      <hr />
+      <div className="updataPrice">
+
+      </div>
+      <div className="updateAllData">
+
       </div>
     </div>
   );
