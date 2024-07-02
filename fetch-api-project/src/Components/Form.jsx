@@ -1,15 +1,17 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-const Form = ({getData}) => {
+const Form = ({getData, updateOnlyPrice}) => {
   let formObj = {
     image: "",
     title: "",
     category: "",
     price: "",
   };
+  console.log(updateOnlyPrice.id);
   const [formData, setformData] = useState(formObj);
   const { image, title, category, price } = formData;
+  
   const HandleInputChange = (e) => {
     setformData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -31,6 +33,11 @@ const Form = ({getData}) => {
     };
     PostData();
   };
+  const HandlePrice=(event)=>{
+    event.preventDefault()
+    // updateOnlyPrice(updatePrice)
+    // updateOnlyPrice(productId)
+  }
   return (
     <div className="form">
       <div className="addProduct">
@@ -68,15 +75,29 @@ const Form = ({getData}) => {
             placeholder="Enter Price"
           />
           <br />
-          <button>Add Product</button>
+          <button className="btn btn-primary w-100 text-uppercase">Add Product</button>
         </form>
       </div>
-      <hr />
-      <div className="updataPrice">
-
-      </div>
+      <hr className="mt-4 mb-3" />
       <div className="updateAllData">
-
+        <form>
+          <h1>Update Product</h1>
+          <input type="text" placeholder="Enter Id" />
+          <input type="text" placeholder="Enter Image URL" />
+          <input type="text" placeholder="Enter Title" />
+          <input type="text" placeholder="Enter Category" />
+          <input type="text" placeholder="Enter Price" />
+          <button className="btn btn-primary w-100 text-uppercase">Update Product</button>
+        </form>
+      </div>
+      <hr className="mt-4 mb-3" />
+      <div className="updataPrice">
+        <form onSubmit={(event)=>HandlePrice(event)}>
+          <h1>Update Price</h1>
+          <input type="text" placeholder="Enter Id"  />
+          <input type="text" placeholder="Enter Price" />
+          <button className="btn btn-primary w-100 text-uppercase" >Update Price</button>
+        </form>
       </div>
     </div>
   );

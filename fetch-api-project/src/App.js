@@ -6,6 +6,8 @@ import axios from 'axios';
 
 function App() {
   const [productData, setproductData] = useState([])
+  const [updatePrice, setupdatePrice] = useState()
+  const [productId, setproductId]= useState()
     const getData = async ()=>{
         try{
             let res = await axios.get("http://localhost:3000/product")
@@ -27,11 +29,22 @@ function App() {
         console.log("error")
       }
     }
+    const updateOnlyPrice = (id, price)=>{
+      
+      // try{
+      //     let response = await axios.get(`http://localhost:3000/product/${id}`)
+      //     console.log(response.data.price)
+      // }catch(error){
+      //     console.log(error)
+      // }
+  }
   return (
     <div className="App">
-        <Form getData={getData}  />
-      <div>
-        <ProductList productData={productData} deleteProduct={deleteProduct} />
+      <div className='form-side'>
+        <Form getData={getData} updateOnlyPrice={updateOnlyPrice}  />
+      </div>
+      <div className='content-side'>
+        <ProductList productData={productData} deleteProduct={deleteProduct} updateOnlyPrice={updateOnlyPrice} />
       </div>
     </div>
   );
