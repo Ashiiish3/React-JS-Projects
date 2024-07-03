@@ -77,6 +77,31 @@
   font-size: 14px;
   letter-spacing: 1px;
 }
-.content-side .product-list .add-cart-btn{
+.content-side .product-list .product-content .cart-box .cart-buttons{
   width: 51.5%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.content-side .product-list .add-cart-btn{
+  width: 100%;
+}
+.content-side .product-list .product-content .cart-box .Decrease-quantity,
+.content-side .product-list .product-content .cart-box .Increase-quantity,
+.content-side .product-list .product-content .cart-box .quantity{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+}
+.content-side .product-list .product-content .cart-box .Decrease-quantity,
+.content-side .product-list .product-content .cart-box .Increase-quantity{
+  border-radius: 50%;
+  padding-bottom: 5px;
+}
+.content-side .product-list .product-content .cart-box .quantity{
+  width: 70px;
+  border-radius: 25px;
 }

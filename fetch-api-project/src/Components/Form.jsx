@@ -1,14 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-const Form = ({getData, updateOnlyPrice}) => {
+const Form = ({getData, productId, setproductId, updatePrice, setupdatePrice, updateAllValues, setupdateAllValues}) => {
   let formObj = {
     image: "",
     title: "",
     category: "",
     price: "",
   };
-  console.log(updateOnlyPrice.id);
   const [formData, setformData] = useState(formObj);
   const { image, title, category, price } = formData;
   
@@ -25,6 +24,10 @@ const Form = ({getData, updateOnlyPrice}) => {
           category: formData.category,
           price: formData.price,
         });
+        formData.image= ""
+        formData.title= ""
+        formData.category= ""
+        formData.price= ""
         alert("Product has been Added.")
         getData()
       } catch (error) {
@@ -32,11 +35,44 @@ const Form = ({getData, updateOnlyPrice}) => {
       }
     };
     PostData();
+   
   };
-  const HandlePrice=(event)=>{
+  const updateOnlyPrice= async (event)=>{
     event.preventDefault()
-    // updateOnlyPrice(updatePrice)
-    // updateOnlyPrice(productId)
+    try{
+      let response = await axios.patch(`http://localhost:3000/product/${productId}`,{
+        "price":updatePrice
+      })
+      updateAllValues.image=""
+      updateAllValues.title=""
+      updateAllValues.category=""
+      setproductId("")
+      setupdatePrice("")
+      alert("Price has been Updated.")
+      getData()
+    }catch(error){
+      console.log(error)
+    }
+  }
+  const updateAllProducts = async (event)=>{
+   event.preventDefault()
+   try{
+    let response = await axios.put(`http://localhost:3000/product/${productId}`,{
+      "image":updateAllValues.image,
+      "title":updateAllValues.title,
+      "category":updateAllValues.category,
+      "price": updatePrice
+    })
+    updateAllValues.image=""
+    updateAllValues.title=""
+    updateAllValues.category=""
+    setproductId("")
+    setupdatePrice("")
+    alert("All Data has been Updated.")
+    getData()
+   }catch(error){
+    console.log(error)
+   }
   }
   return (
     <div className="form">
@@ -80,23 +116,23 @@ const Form = ({getData, updateOnlyPrice}) => {
       </div>
       <hr className="mt-4 mb-3" />
       <div className="updateAllData">
-        <form>
+        <form onSubmit={(event)=>updateAllProducts(event)}>
           <h1>Update Product</h1>
-          <input type="text" placeholder="Enter Id" />
-          <input type="text" placeholder="Enter Image URL" />
-          <input type="text" placeholder="Enter Title" />
-          <input type="text" placeholder="Enter Category" />
-          <input type="text" placeholder="Enter Price" />
+          <input type="text" placeholder="Enter Id" value={productId} />
+          <input type="text" placeholder="Enter Image URL" onChange={(e)=>setupdateAllValues({...updateAllValues, image: e.target.value})} value={updateAllValues.image} />
+          <input type="text" placeholder="Enter Title" onChange={(e)=>setupdateAllValues({...updateAllValues, title: e.target.value})} value={updateAllValues.title} />
+          <input type="text" placeholder="Enter Category" onChange={(e)=>setupdateAllValues({...updateAllValues, category: e.target.value})} value={updateAllValues.category} />
+          <input type="text" placeholder="Enter Price" value={updatePrice} onChange={(e)=>setupdatePrice(e.target.value)} />
           <button className="btn btn-primary w-100 text-uppercase">Update Product</button>
         </form>
       </div>
       <hr className="mt-4 mb-3" />
       <div className="updataPrice">
-        <form onSubmit={(event)=>HandlePrice(event)}>
+        <form onSubmit={(event)=>updateOnlyPrice(event)}>
           <h1>Update Price</h1>
-          <input type="text" placeholder="Enter Id"  />
-          <input type="text" placeholder="Enter Price" />
-          <button className="btn btn-primary w-100 text-uppercase" >Update Price</button>
+          <input type="text" placeholder="Enter Id" value={productId} />
+          <input type="text" placeholder="Enter Price" value={updatePrice} onChange={(e)=>setupdatePrice(e.target.value)} />
+          <button className="btn btn-primary w-100 text-uppercase">Update Price</button>
         </form>
       </div>
     </div>
