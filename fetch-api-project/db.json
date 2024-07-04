@@ -8,11 +8,11 @@
       "id": "71e9"
     },
     {
-      "id": "53f7",
       "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
-      "title": "ds",
-      "category": "sdaf",
-      "price": "650"
+      "title": "SandDisk Pendrive 64GB Black Color",
+      "category": "Electronics",
+      "price": "650",
+      "id": "53f7"
     },
     {
       "id": "3767",
@@ -29,11 +29,11 @@
       "price": "430"
     },
     {
-      "id": "e51a",
       "image": "https://m.media-amazon.com/images/I/51GOpp8rAJL._AC_UL320_.jpg",
-      "title": "sdaf",
-      "category": "sadf",
-      "price": "666"
+      "title": "Shoes for men",
+      "category": "Shoe",
+      "price": "666",
+      "id": "e51a"
     },
     {
       "id": "1ad8",

@@ -18,7 +18,6 @@ function App() {
         try{
             let res = await axios.get("http://localhost:3000/product")
             setproductData(res.data)
-            console.log(res.data)
         }catch(error){
             console.log(error)
         }

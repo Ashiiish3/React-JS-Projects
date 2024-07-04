@@ -1,0 +1,39 @@
+.App {
+  width: 40%;
+  margin: auto;
+}
+.App h1,
+.App .page-container{
+  text-align: center;
+}
+.App .page-container button{
+  height: 40px;
+  width: 50px;
+  margin: 0px 10px;
+}
+.loading-indicator{
+  height: 50px;
+  width: 50px;
+  margin: 2% auto;
+}
+.total-pages-box{
+  display: inline-block;
+  margin: 10px 0px;
+  font-size: 22px;
+}
+.loader{
+  height: 40px;
+  width: 40px;
+  border: 7px solid #e2e2e2;
+  border-radius: 50%;
+  border-top: 7px solid black;
+  animation: rotate infinite 1s linear;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
