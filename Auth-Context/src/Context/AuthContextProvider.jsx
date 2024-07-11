@@ -1,9 +1,12 @@
-import React, {useState} from 'react'
+import React, {createContext, useState} from 'react'
 
-export default function AuthContextProvider() {
+export const FormContext = createContext()
 
-  return (
-    <div>
-    </div>
-  )
+export function AuthContextProvider({children}) {
+    const [fetchData, setFetchData]= useState()
+    
+    return(
+        <FormContext.Provider>{children}</FormContext.Provider>
+    )
+    
 }

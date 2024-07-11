@@ -4,7 +4,6 @@ const StudentForm = () => {
   // to get data from Local Storage
   const getDataFromLocalStorage = ()=>{
     let list = JSON.parse(localStorage.getItem("StudentForm"))
-    console.log(list)
     if(list){
       return JSON.parse(localStorage.getItem("StudentForm"))
     }
@@ -37,13 +36,12 @@ const StudentForm = () => {
   },[items])
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form data submitted.');
-    console.log(formData)
+    alert('Form data has been Submitted.');
     setItems([...items, formData])
     setFormData(studentFormObj)
   };
   return (
-    <div className="complaint-form-container">
+    <div className="form">
       <h1>Student Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -92,7 +90,7 @@ const StudentForm = () => {
         <div className="form-group">
           <label htmlFor="">Select</label>
           <select name='select' value={select} onChange={handleChange}>
-            <option value="Freshman">Select</option>
+            <option value="select">Select</option>
             <option value="Freshman">Freshman</option>
             <option value="Sophomore">Sophomore</option>
             <option value="Junior">Junior</option>

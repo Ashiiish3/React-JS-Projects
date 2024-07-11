@@ -35,7 +35,6 @@ const Form = ({getData, productId, setproductId, updatePrice, setupdatePrice, up
       }
     };
     PostData();
-   
   };
   const updateOnlyPrice= async (event)=>{
     event.preventDefault()
