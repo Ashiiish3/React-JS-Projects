@@ -5,9 +5,8 @@
 }
 .App {
   font-family: sans-serif;
-  text-align: center;
 }
-.form-box{
+.form-box, .dashboard{
   border: 1px solid black;
   height: 250px;
   width: 250px;
@@ -20,9 +19,11 @@
   padding: 8px;
   margin-bottom: 13px;
 }
-.form-box h1{
-  font-family: Arial, Helvetica, sans-serif;
+.dashboard h3{
+  text-align: center;
 }
-.form-box input:focus{
-  border: 1px solid red;
+.dashboard button{
+  width: 100%;
+  padding: 8px 0px;
+  margin-top: 25px;
 }

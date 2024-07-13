@@ -17,7 +17,6 @@ export function AuthContextProvider({children}) {
         setUser({isAuth: false, loading: false, error: null, token: ""})
     }
     return(
-        <FormContext.Provider value={{user, logIn, logOut}} >{children}</FormContext.Provider>
+        <FormContext.Provider value={{user, logIn, logOut}}>{children}</FormContext.Provider>
     )
-    
 }

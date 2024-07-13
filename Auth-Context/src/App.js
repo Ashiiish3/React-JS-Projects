@@ -6,7 +6,7 @@ import { FormContext } from './Context/AuthContextProvider'
 export default function App() {
   const {user} = useContext(FormContext)
   return (
-    <div>
+    <div className='App'>
         {user.isAuth ? <Dashboard /> : <Login />}
     </div>
   )

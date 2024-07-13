@@ -9,7 +9,7 @@ export default function Login() {
     }
     const [formData, setFormData]= useState(formObj)
     const {email, password}= formData
-    const {user, logIn, logOut} = useContext(FormContext)
+    const {logIn} = useContext(FormContext)
     const HandleInputChange=(e)=>{
         setFormData({...formData,[e.target.name]:e.target.value})
     }
@@ -41,6 +41,7 @@ export default function Login() {
                     data-testid = "email"
                     placeholder = "Enter Email"
                     onChange={(e)=>HandleInputChange(e)}
+                    required
                 />
                 <br />
                 <input
@@ -50,10 +51,11 @@ export default function Login() {
                     data-testid = "password"
                     placeholder = "Enter password"
                     onChange={(e)=>HandleInputChange(e)}
+                    required
                 />
                 <br />
-                <input type = "submit"/>
-            </form>                
+                <input type ="submit"/>
+            </form>
         </div>
     )
 }
