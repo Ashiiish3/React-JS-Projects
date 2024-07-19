@@ -1,7 +1,6 @@
 .App {
   display: flex;
   justify-content: space-between;
-  /* border: 2px solid black; */
   width: 55%;
   margin: auto;
   padding: 40px 0px;
