@@ -2,7 +2,7 @@
   "product": [
     {
       "id": 1,
-      "title": "Foldsack No. 1 Backpack, Fits 15 Laptops",
+      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
       "price": 109.95,
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
       "category": "men's clothing",
@@ -50,7 +50,7 @@
     },
     {
       "id": 5,
-      "title": "John Hardy Women's Legends Chain Bracelet",
+      "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
       "price": 695,
       "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
       "category": "jewelery",
@@ -241,32 +241,25 @@
       }
     },
     {
-      "image": "https://m.media-amazon.com/images/I/51GafQzFAnL._SX679_.jpg",
-      "title": "Mens Watches Chronograph Diamond",
-      "price": "288",
-      "category": "Electronics",
+      "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/v/x/p/6-hrx-087-01-hrx-by-hrithik-roshan-white-black-orange-original-imagtr5djpxg8sy7.jpeg?q=70",
+      "title": "addidas shoes",
+      "price": "50",
+      "category": "Shoes",
       "id": 21
     },
     {
-      "image": "https://m.media-amazon.com/images/I/51GafQzFAnL._SX679_.jpg",
-      "title": "Mens Watches Chronograph Diamond",
-      "price": "288",
-      "category": "Electronics",
+      "image": "https://m.media-amazon.com/images/I/71u2XOFXAIL._AC_UL320_.jpg",
+      "title": "addidas men shoes",
+      "price": "70",
+      "category": "shoe",
       "id": 22
     },
     {
-      "image": "https://m.media-amazon.com/images/I/51GafQzFAnL._SX679_.jpg",
-      "title": "Mens Watches Chronograph Diamond",
-      "price": "288",
-      "category": "Electronics",
+      "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+      "title": "fggf",
+      "price": "dsf",
+      "category": "dfg",
       "id": 23
-    },
-    {
-      "image": "https://m.media-amazon.com/images/I/51GafQzFAnL._SX679_.jpg",
-      "title": "Mens Watches Chronograph Diamond",
-      "price": "288",
-      "category": "Electronics",
-      "id": 24
     }
   ]
 }

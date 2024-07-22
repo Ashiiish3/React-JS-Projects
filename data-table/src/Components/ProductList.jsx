@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import { GetDataContext } from '../context/GetDataContext'
 
 export default function ProductList() {
-    const {productData} = useContext(GetDataContext)
+    const {productData, DeleteProduct} = useContext(GetDataContext)
   return (
     <div>
          <AddProduct />
@@ -19,8 +19,8 @@ export default function ProductList() {
                     <h4 className='cursor-pointer'>Price: {product.price}$</h4>
                 </Link>
                 <div className='flex justify-evenly mt-5'>
-                    <button className='bg-blue-600 h-10 w-24 rounded-3xl text-white'>Edit</button>
-                    <button className='bg-blue-600 h-10 w-24 rounded-3xl text-white'>Delete</button>
+                    <Link to={`/EditProduct/${product.id}`}><button className='bg-blue-600 h-10 w-24 rounded-3xl text-white'>Edit</button></Link>
+                    <button className='bg-blue-600 h-10 w-24 rounded-3xl text-white' onClick={()=>DeleteProduct(product.id)}>Delete</button>
                 </div>
             </div>
         ))}

@@ -20,12 +20,10 @@ export default function AddProduct() {
     }
     const submitForm = async (e)=>{
         e.preventDefault()
-        console.log(formData)
         try{
             const response = await axios.post("http://localhost:3000/product",formData)
             alert("Product data has been Added.")
             getData()
-            console.log(formData)
             formData.image = ""
             formData.title = ""
             formData.price = ""
