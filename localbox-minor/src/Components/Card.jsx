@@ -1,13 +1,15 @@
-import React from 'react'
+import React from "react";
 
-export default function Card({image, category, discount}) {
+export default function Card({ image, category, discount }) {
   return (
-    <div className='bg-red-300 h-[400px] w-[200px]'>
+    <div className="w-[250px] p-4 bg-white shadow-xl">
       <div>
-        <img src={image} alt="" />
+        <div className="flex justify-between h-52 mb-5">
+          <img src={image} alt="" className="m-auto" />
+        </div>
         <p>{category}</p>
         <p>{discount}</p>
       </div>
     </div>
-  )
+  );
 }
