@@ -1,4 +1,6 @@
 import axios from "axios";
+import React from 'react'
+
 import { useEffect, useState, createContext } from "react";
 
 export const GetDataContext = createContext()
@@ -19,8 +21,10 @@ export function GetDataContextProvider({children}){
     },[])
     const DeleteProduct = (id)=>{
         try{
-            const response = axios.delete(`http://localhost:3000/product/${id}`)
-            alert("Your Product has been deleted.")
+            const userConfirmed = window.confirm("Are you sure you want to delete this item?");
+            if (userConfirmed) {
+                const response = axios.delete(`http://localhost:3000/product/${id}`)
+            }
             getData()
         }
         catch(error){
