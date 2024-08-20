@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 
-export default function Products() {
+export default function Dashboard() {
   const [productData, setProductData] = useState([]);
   const getData = () => {
     axios

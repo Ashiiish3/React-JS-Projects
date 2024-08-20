@@ -1,6 +1,4 @@
-import React, { useContext, useState } from "react";
-import axios from "axios";
-import { FormContext } from "../ContextAPI/AuthContext";
+import React, { useState } from "react";
 
 export default function Login() {
   let formObj = {
@@ -9,26 +7,15 @@ export default function Login() {
   };
   const [formData, setFormData] = useState(formObj);
   const { email, password } = formData;
-  const { logIn } = useContext(FormContext);
   const HandleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const SubmitForm = (event) => {
     event.preventDefault();
-    const PostData = async () => {
-      try {
-        let response = await axios.post("https://reqres.in/api/login", {
-          email: formData.email,
-          password: formData.password,
-        });
-        alert("Login Successfully!");
-        logIn(response.data.token);
-      } catch (error) {
-        console.log(error.message);
-        alert("Login failed. Please try again.")
-      }
+    const PostData = () => {
+      
     };
-    PostData();
+    // PostData();
   };
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
