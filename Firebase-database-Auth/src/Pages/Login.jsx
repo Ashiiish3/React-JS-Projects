@@ -1,10 +1,15 @@
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import React, { useState } from "react";
+import { auth, provider } from "../Service/Firebase";
+import { useNavigate } from "react-router-dom";
+import GoogleButton from "react-google-button";
 
 export default function Login() {
   let formObj = {
     email: "",
     password: "",
   };
+  const navigate = useNavigate();
   const [formData, setFormData] = useState(formObj);
   const { email, password } = formData;
   const HandleInputChange = (e) => {
@@ -12,10 +17,22 @@ export default function Login() {
   };
   const SubmitForm = (event) => {
     event.preventDefault();
-    const PostData = () => {
-      
-    };
-    // PostData();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+        alert("Login Successfull");
+        navigate("/Dashboard");
+      })
+      .catch((error) => {
+        alert("Login Failed. Please Sign Up first.");
+      });
+  };
+  const SubmitLoginFromGoogleButton = () => {
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        alert("You are logged in Successfully using Google.");
+        navigate("/Dashboard");
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -45,10 +62,14 @@ export default function Login() {
           required
           className="w-full p-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <input
-          type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded-md cursor-pointer hover:bg-blue-600 transition duration-200"
-        />
+        <button className="w-full bg-blue-500 text-white p-2 rounded-md cursor-pointer hover:bg-blue-600 transition duration-200">
+          Login
+        </button>
+        <div className="mt-5 m-auto flex justify-center">
+          <GoogleButton 
+            onClick={SubmitLoginFromGoogleButton}
+          />
+        </div>
       </form>
     </div>
   );

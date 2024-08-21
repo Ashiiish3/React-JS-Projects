@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
 
 export default function Dashboard() {
   const [productData, setProductData] = useState([]);
@@ -20,7 +19,6 @@ export default function Dashboard() {
           <div
             key={ind}
             className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <NavLink to={`/Description/${ele.id}`}>
               <div className="h-48 bg-gray-200 flex items-center justify-center">
                 <img
                   src={ele.image}
@@ -28,7 +26,6 @@ export default function Dashboard() {
                   className="h-full object-cover"
                 />
               </div>
-            </NavLink>
             <div className="p-4">
               <h1 className="text-xl font-semibold mb-2">{ele.title}</h1>
               <h4 className="text-lg font-bold text-gray-800 mb-2">
