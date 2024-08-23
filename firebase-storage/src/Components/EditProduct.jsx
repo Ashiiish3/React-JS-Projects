@@ -1,9 +1,11 @@
-import axios from 'axios'
+import { addDoc, collection, doc, getDoc, setDoc } from 'firebase/firestore'
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { GetDataContext } from '../context/GetDataContext'
+import { db } from '../Services/Firebase'
+import { GetDataContext } from '../ContextAPI/GetDataContext'
 
 export default function EditProduct() {
+    const { getDataFromFirebase } = useContext(GetDataContext)
     const EditObj = {
         image: "",
         title: "",
@@ -11,43 +13,38 @@ export default function EditProduct() {
         category: ""
       }
       const {id}= useParams()
-      const {getData}= useContext(GetDataContext)
       const [editData, setEditData] = useState(EditObj)
       const {image, title, price, category} = editData
       const getDataForEdit = async () => {
-        try{
-          const response = await axios.get(`http://localhost:3000/product/${id}`)
-          setEditData(response.data)
-        }
-        catch(error){
-          console.log(error)
-        }
+        getDoc(doc(db, "Products", id)).then((res)=>{
+            setEditData(res.data())
+        }).catch((err)=>console.log(err))
       }
       useEffect(()=>{
         getDataForEdit()
-      },[])
+    },[])
       const EditInputChange = (e)=>{
         setEditData({...editData, [e.target.name]: e.target.value})
-        
       }
       const submitEditForm = async (e)=>{
         e.preventDefault()
         try{
-          const response = await axios.put(`http://localhost:3000/product/${id}`, editData)
-          alert("Your Data has been Edited.")
-          editData.image = ""
-          editData.title = ""
-          editData.price = ""
-          editData.category = ""
-          getData()
+            setDoc(doc(db, "Products", id), editData).then((res)=>{
+              alert("Product has been Edited.")
+              getDataFromFirebase()
+              editData.image = ""
+              editData.title = ""
+              editData.price = ""
+              editData.category = ""
+            }).catch((err)=>console.log(err))
         }
-        catch(error){
-          console.log(error)
+        catch(err){
+            console.log(err)
         }
       }
       return (
         <div className='mt-8 w-[20%] mx-auto py-5 px-10 border-2 border-gray-300'>
-          <h1 className='text-2xl font-medium mb-5'>Add Product</h1>
+          <h1 className='text-2xl font-medium mb-5'>Edit Product</h1>
           <form className='grid grid-cols-1' onSubmit={(e)=>submitEditForm(e)}>
             <input type="text" className='border border-slate-400 rounded-md my-2 px-2 py-2' placeholder='Enter Image URL' name='image' value={image} onChange={(e)=>EditInputChange(e)} required />
             <input type="text" className='border border-slate-400 rounded-md my-2 px-2 py-2' placeholder='Enter Title' name='title' value={title} onChange={(e)=>EditInputChange(e)} required />

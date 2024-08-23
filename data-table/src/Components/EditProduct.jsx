@@ -47,7 +47,7 @@ export default function EditProduct() {
   }
   return (
     <div className='mt-8 w-[20%] mx-auto py-5 px-10 border-2 border-gray-300'>
-      <h1 className='text-2xl font-medium mb-5'>Add Product</h1>
+      <h1 className='text-2xl font-medium mb-5'>Edit Product</h1>
       <form className='grid grid-cols-1' onSubmit={(e)=>submitEditForm(e)}>
         <input type="text" className='border border-slate-400 rounded-md my-2 px-2 py-2' placeholder='Enter Image URL' name='image' value={image} onChange={(e)=>EditInputChange(e)} required />
         <input type="text" className='border border-slate-400 rounded-md my-2 px-2 py-2' placeholder='Enter Title' name='title' value={title} onChange={(e)=>EditInputChange(e)} required />

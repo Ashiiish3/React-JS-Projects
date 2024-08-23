@@ -1,14 +1,14 @@
 import React from 'react'
-import ProductList from '../Pages/ProductList'
-import { Route, Routes } from 'react-router-dom'
-import AddProducts from '../Components/AddProducts'
+import { Route, Routes } from "react-router-dom";
+import ProductList from '../Components/ProductList';
+import EditProduct from '../Components/EditProduct';
 
 export default function AllRoutes() {
   return (
     <Routes>
-        <Route path={'/'} element={<ProductList />}></Route>
-        <Route path={'/AddProducts'} element={<AddProducts />}></Route>
-        <Route path={'*'} element={<h1>Page Not Found</h1>}></Route>
+        <Route path='/' element={<ProductList />} ></Route>
+        <Route path='/EditProduct/:id' element={<EditProduct />} ></Route>
+        <Route path='*' element={<h1>Page Not Found.</h1>} ></Route>
     </Routes>
   )
-}     
+}
