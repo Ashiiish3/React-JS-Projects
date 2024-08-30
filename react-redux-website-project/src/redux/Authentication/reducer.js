@@ -9,11 +9,11 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case Login_Request:
-      return { ...initialState, isLoading: true };
+      return { isError: false, isLoading: true, token: null };
     case Login_Successful:
-      return { ...initialState, token: action.payload };
+      return { isError:false, isLoading: false, token: action.payload };
     case Login_failed:
-      return { ...initialState, isError: true };
+      return { isLoading: false, token: null, isError: true };
     default:
       return state;
   }

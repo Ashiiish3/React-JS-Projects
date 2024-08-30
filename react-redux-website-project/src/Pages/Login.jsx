@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { Login_failed, Login_Request, Login_Successful } from "../redux/actionType";
 
 export default function Login() {
-  const {isLoading, isError, token} = useSelector((data) => data.AuthReducer);
+  const {isLoading, isError} = useSelector((data) => data.AuthReducer);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch()
