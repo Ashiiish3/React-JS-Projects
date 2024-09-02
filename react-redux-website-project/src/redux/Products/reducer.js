@@ -10,7 +10,7 @@ export const reducer = (state=initialState, action) => {
     case Product_Data_Request:
       return {isLoading: true, isError: false, products: []};
     case Product_Request_Successful:
-      return {isLoading: true, isError: false, products: action.payload};
+      return {isLoading: false, isError: false, products: action.payload};
     case Product_Request_Failed:
       return {isLoading: false, isError: true, products: []};
     default:
