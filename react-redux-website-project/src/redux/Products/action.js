@@ -5,7 +5,7 @@ import {
   Product_Request_Successful,
 } from "../actionType";
 
-export const getData = () => {
+export const getData = (dispatch) => {
   dispatch({ type: Product_Data_Request });
   axios
     .get(`https://fakestoreapi.com/products`)

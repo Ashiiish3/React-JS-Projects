@@ -16,7 +16,7 @@ export default function Products() {
   );
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getData());
+    dispatch(getData);
   }, []);
   return isLoading ? (
     <Loading />
