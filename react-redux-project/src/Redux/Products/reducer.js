@@ -1,6 +1,6 @@
 import { Error_Product_Data, Get_Product_Data, Request_Product_Data } from "../actionType"
 
-const initialState ={
+const initialState = {
     isLoading : false,
     isError : false,
     product: []
