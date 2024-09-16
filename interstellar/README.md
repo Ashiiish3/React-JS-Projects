@@ -1,70 +1,198 @@
-# Getting Started with Create React App
+# React - Tech Products Listing with Auth
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Submission Instrions [Please note]
 
-## Available Scripts
+### Maximum Marks - 16
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+ ✅ able to submit the app - 1 mark ( minimum score )
+ ✅ App loads correctly - 1 mark
+ ✅ Private Route component redirects user to login when visiting /dashboard page without log in - 1 mark
+ ✅ Private Route component redirects user to login when visiting /products/:id without log in page - 1 mark
+ ✅ Login page works correctly - 4 marks
+ ✅ should render Dashoard after successful log in - 4 marks
+ ✅ Redirecting from Dashboard page to single product page works correctly - 2 mark
+ ✅ Single Product page works correctly 1 - 1 mark
+ ✅ Single Product page works correctly 2 - 1 mark
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Description
 
-### `npm test`
+- You need to make an application which lists tech products from an api
+- You need to be able to click on a brand name, and move to the single product page `/products/<id>`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Boilerplate
 
-### `npm run build`
+- You are given a set of `Pages`
+  - Home
+    - you are given this already
+    - it contains links to other routes
+    - login, and dashboard routes
+  - Login
+    - user should be able to login from here
+    - use reqres.in api for logging in
+    - you need to maintain the user auth state in a context API
+  - Dashboard
+    - user should be able to see a list of all products fetched from API
+    - it should be in tabular format
+    - on clicking brand here you should be able to be redirected to the `/products/<id>` page
+  - SingleProductPage
+    - you need to use dynamic routing to fetch the id and fetch from details from API again
+  - AllRoutes
+    - all the routes are present here
+- `Components`
+  - ProductsTable
+    - accept `data` property and has a list of ProductsCards
+  - ProductCard
+    - accept the following props:
+    - `brand`
+    - `category`
+    - `price`
+    - `id`
+  - PrivateRoute
+    - it should show the child component if user is authenticated
+    - otherwise move the user to login page
+  - AuthContext
+    - manage auth context here
+    - both user token, and login state
+- You are given these dummy elements (anything with data-testid you should not remove or change the attribute values)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm install --engine-strict
 
-### `npm run eject`
+// test locally
+npm run test
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Requirements
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `API details`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `GET` : products list
+- `base-url`: `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com`
+- `url`: `/mockapi/get-tech-products`
+- response
+  - `data`: array of products
+  - `totalPages`: number representing no of pages
+- You cannot use JSON server
+- use useEffect to display the data on the UI
+- `GET` - get products by id
+- `base-url`: `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com`
+- `url`: `/mockapi/get-tech-products/:id`
+- response
+  - `data`: product information
+- example: `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-tech-products/5`
 
-## Learn More
+### `Pages & Components`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### `AllRoutes.jsx`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- It should contain all the routes for your application
 
-### Code Splitting
+```
+/ - Home
+/login - Login Page
+/dashboard - Dashboard - Private
+/products/<id> - Products Single Page - Private
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### `Home.jsx`
 
-### Analyzing the Bundle Size
+- You dont need to update anything here 
+![](https://camo.githubusercontent.com/e96c9ae2ea5745bb963bf5c2f6676a5ff07137a7444eaa817d827a8024c8a158/68747470733a2f2f692e696d6775722e636f6d2f5172756d4c6b612e706e67)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### `Login.jsx`
 
-### Making a Progressive Web App
+- A user should be able to login from here
+- There is a form already made for you
+- You need to complete it with by using the following api
+- `POST`
+- https://reqres.in/api/login
+- DOCS: https://reqres.in/
+- You need to maintain the authentication state in context API
+- `isAuth`, and `token`
+- token - should be null by default
+- isAuth - should be false by default
+- once logged in, a user is redirected to `/dashboard` route
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+![](https://camo.githubusercontent.com/98993b5cff70b2a78a010aff83322533c20691da4949ba783054f295e7c4d41b/68747470733a2f2f692e696d6775722e636f6d2f4d6664504370652e706e67)
+#### `PrivateRoute.jsx`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- PrivateRoute
+  - it should show the child component if user is authenticated
+  - otherwise move the user to `/login` page
+  - use from AuthContext to decide if the user is authenticated or not
+  
+#### `Loader.jsx`
+ 
+- Loader
+  - should render loader component when api call is made and yet to complete
+ 
+ 
 
-### Deployment
+#### `Dashboard.jsx`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Once logged in, a user sees the this page
+- you should have a Logout button [data-testid="logout-btn"]
+- once clicking on it, you should be logged out
+- there is an element with [data-testid="user-token"]
+- you need to display the users token here, which you got when logging in
+- List all the products from the API page wise
+- you need to display the results using the ProductsTable component, pass the data here from the API response
+- loading indicators to be present here
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### `ProductsTable.jsx`
+
+- it should accept a data property, which will contain the array of products
+- this is a table component
+- from the data property, create a list of ProductCards components
+- each of the ProductCard component will have a table row element, and each of the row will contain id ( this you should update in S No column ), brand,category and price of each product
+
+![](https://i.imgur.com/1zeeBRw.png)
+#### `ProductCard.jsx`
+
+- it should accept the following properties
+  - id
+  - brand
+  - category
+  - price
+- The elements with the following attributes need to have corresponding values mapped to it
+- data-testid="item" - the tr element is here
+- the following are td elements
+- data-testid="brand" - This should be a Link tag, and on clicking you need to redirect a user from dashboard to singleProduct page
+- data-testid="category"
+- data-testid="price"
+
+### `SingleProductPage.jsx`
+
+- on clicking brand of any product on dashboard SingleProductPage shouyld be rendered
+- should maintain the loading status when api call happens
+- make an api request to the tech products url with the respective id and display brand, image,details ,price and category as card.
+- the follwoing testids should present in this page for brand,category,image,price and details respectively .
+  - data-testid = product-brand
+  - data-testid= product-category
+  - data-testid= product-image (img should have alt as respective brand name)
+  - data-testid = product-price
+  - data-testid = product-details
+![](https://i.imgur.com/kohy6vQ.png)
+
+#### `AuthContext.jsx`
+
+- The AuthContext and the Provider should be made here
+- user should be able to pass the states for
+- authentication isAuth - default value false
+- token - default value null
+- your value be passing down in the AuthContextProvider as value is { authState, ....otherFunctions }
+  - authState should contain the isAuth and token
+  - mandatory ^
+- create the following functions as well and pass in value object
+- loginUser - set auth to true and token to corresponding token
+- logoutUser - set auth to false, and token back to null
+

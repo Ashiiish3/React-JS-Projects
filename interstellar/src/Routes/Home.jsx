@@ -1,0 +1,14 @@
+import { Link } from "react-router-dom";
+
+export function Home() {
+  return (
+    <div>
+      <Link to="/login">
+        <h3 data-testid="login-link">Login Page</h3>
+      </Link>
+      <Link to="/dashboard">
+        <h3 data-testid="home-link">Home</h3>
+      </Link>
+    </div>
+  );
+}
