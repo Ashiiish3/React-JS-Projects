@@ -1,31 +1,80 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Login_Request, Request_Error, Request_Successful } from "../Redux/actionType";
 
 function Login() {
-  return (
-    <div>
-      <form data-testid="login-form">
-        <div>
-          <label>
-            Email
-            <input data-testid="email-input" type="email" placeholder="email" />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password
+  const navigate = useNavigate()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const dispatch = useDispatch()
+  const {isLoading, isError, token} = useSelector((data)=>data.loginReducer)
+  console.log(isLoading, isError, token)
+  const HandleSubmit = (e) => {
+    e.preventDefault()
+    let userData = {
+      email, password
+    }
+    PostData(userData)
+  }
+  const PostData = async (userData) => {
+    dispatch({type: Login_Request});
+    try {
+      let response = await axios.post("https://reqres.in/api/login", userData);
+      dispatch({type: Request_Successful, payload: response.data.token});
+      navigate('/dashboard')
+    } catch (error) {
+      dispatch({type: Request_Error});
+      console.log(error)
+    }
+  };
+  return isLoading ? <h1>Loading...</h1> : isError ? <h1>Your Email and Password is not correct.</h1> : (
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <form data-testid="login-form" className="space-y-6" onSubmit={(e)=>HandleSubmit(e)}>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+              <input
+                data-testid="email-input"
+                type="email"
+                placeholder="email"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                name="email"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Password
+              <input
+                data-testid="password-input"
+                type="password"
+                placeholder="password"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                name="password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
+              />
+            </label>
+          </div>
+          <div>
             <input
-              data-testid="password-input"
-              type="password"
-              placeholder="password"
+              data-testid="form-submit"
+              type="submit"
+              value="SUBMIT"
+              className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 cursor-pointer"
             />
-          </label>
+          </div>
+        </form>
+        <div className="mt-4 text-center">
+          <Link to="/" className="text-indigo-600 hover:text-indigo-800">
+            Go Back
+          </Link>
         </div>
-        <div>
-          <input data-testid="form-submit" type="submit" value="SUBMIT" />
-        </div>
-      </form>
-      <div>
-        <Link to="/">Go Back</Link>
       </div>
     </div>
   );

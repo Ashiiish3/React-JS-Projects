@@ -1,22 +1,31 @@
-function ProductsTable({data}){
-    return (
-            <table border="1px">
-                <thead>
-                    <tr>
-                        <th>Sno</th>
-                        <th>Brand</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* map through the data */}
-                    {[].map((item) => {
+import { ProductCard } from "./ProductCard";
 
-                    })}
-                </tbody>
-            </table>
-    )
+export function ProductsTable({ data }) {
+  return (
+    <table
+      className="w-[40%] border-collapse border border-gray-300"
+    >
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="p-2 border border-gray-300">S.no.</th>
+          <th className="p-2 border border-gray-300">Brand</th>
+          <th className="p-2 border border-gray-300">Category</th>
+          <th className="p-2 border border-gray-300">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {/* map through the data */}
+        {data.map((item) => (
+          <ProductCard
+            key={item.id}
+            brand={item.brand}
+            category={item.category}
+            price={item.price}
+            id={item.id}
+          />
+        ))}
+      </tbody>
+    </table>
+  );
 }
-
-export default ProductsTable
+export default ProductsTable;

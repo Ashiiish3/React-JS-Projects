@@ -1,6 +1,7 @@
 import {combineReducers, legacy_createStore} from 'redux'
-import { reducer as dashboardReducer } from './Dashboard/reducer'
+import { reducer as loginReducer } from './Login/reducer'
 
-const rootReducer = combineReducers({dashboardReducer})
+
+const rootReducer = combineReducers({loginReducer})
 
 export const store = legacy_createStore(rootReducer)
