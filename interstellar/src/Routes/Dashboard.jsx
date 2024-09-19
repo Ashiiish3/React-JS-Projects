@@ -8,7 +8,6 @@ function Dashboard() {
   const [data, setData] = useState([])
   const [loader, setLoader] = useState(false)
   const {login, logOutUser}= useContext(AuthContext)
-
   const getData = async () => {
     setLoader(true)
     try {
