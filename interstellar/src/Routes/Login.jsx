@@ -1,16 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Login_Request, Request_Error, Request_Successful } from "../Redux/actionType";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Context/AuthContext";
 
 function Login() {
   const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const dispatch = useDispatch()
-  const {isLoading, isError, token} = useSelector((data)=>data.loginReducer)
-  console.log(isLoading, isError, token)
+  const {loginUser} = useContext(AuthContext)
   const HandleSubmit = (e) => {
     e.preventDefault()
     let userData = {
@@ -19,17 +16,17 @@ function Login() {
     PostData(userData)
   }
   const PostData = async (userData) => {
-    dispatch({type: Login_Request});
     try {
       let response = await axios.post("https://reqres.in/api/login", userData);
-      dispatch({type: Request_Successful, payload: response.data.token});
+      alert('You are Login successfully')
+      loginUser(response.data.token)
       navigate('/dashboard')
     } catch (error) {
-      dispatch({type: Request_Error});
+      alert('Login and Password are not correct.')
       console.log(error)
     }
   };
-  return isLoading ? <h1>Loading...</h1> : isError ? <h1>Your Email and Password is not correct.</h1> : (
+  return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <form data-testid="login-form" className="space-y-6" onSubmit={(e)=>HandleSubmit(e)}>
