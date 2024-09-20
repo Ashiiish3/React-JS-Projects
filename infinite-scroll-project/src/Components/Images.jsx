@@ -1,51 +1,58 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function Images() {
-    const [imageData, setImageData] = useState([])
-    let ready = false;
-    let imagesLoaded = 0;
-    let totalImages = 10;
-    const imageLoader = () => {
-        imagesLoaded++
-        if(imagesLoaded == totalImages){
-            ready = true;
-            imagesLoaded=0;
-            console.log("hiii")
-        }
+  const [photosArray, setPhotosArray] = useState([]);
+  const [ready, setReady] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const totalImages = 10;
+  const getPhotos = async () => {
+    try {
+      let responsive = await axios.get('https://api.unsplash.com/photos/random/?client_id=osvC4CFIy9TQtImOfc_eA-GTn5r7RoKRA-SmKpPgRkE&count=10')
+      setPhotosArray((prevPhotos) => [...prevPhotos, ...responsive.data]);
+      setReady(true);
+    } catch (error) {
+      console.error(error);
     }
-    const GetData = async () => {
-        try {
-            let responsive = await axios.get('https://picsum.photos/v2/list?limit=10')
-            // console.log(responsive.data)
-            setImageData(responsive.data)
-        } catch (error) {
-            console.log(error)
-        }
+  };
+  const imageLoader = () => {
+    setImagesLoaded((prev) => prev + 1);
+    if (imagesLoaded + 1 === totalImages) {
+      setReady(true);
+      setImagesLoaded(0);
     }
-    const windowScroll = () => {
-        window.addEventListener("scroll", function scroll() {
-            if (window.scrollY >= document.body.offsetHeight - 2000 && ready) {
-              ready = false;
-              console.log("more image loading....");
-              GetData();
-            }
-          });
+  };
+
+  const handleScroll = useCallback(() => {
+    if (window.scrollY >= document.body.offsetHeight - 2000 && ready) {
+      setReady(false);
+      // more images loading...."
+      getPhotos();
     }
-    windowScroll()
-    useEffect(()=>{
-        GetData()
-    },[])
+  }, [ready]);
+
+  useEffect(() => {
+    getPhotos();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
   return (
     <div>
-      <h1>Infinite Scrolling Project</h1>
-      <div>
-        {imageData.map((items, index)=>(
-            <div key={index}>
-                <img src={items.download_url} alt="" className='w-[50%] m-auto' onLoad={imageLoader} />
-            </div>
-        ))}
-      </div>
+      <h1 className='text-4xl font-bold bg-teal-500 text-white p-4 sticky top-0 mb-3'>Infinite Scroll Project</h1>
+      <div id="imgcontainer">
+      {photosArray.map((photo) => (
+        <img
+          key={photo.id}
+          src={photo.urls.regular}
+          alt={photo.alt_description}
+          onLoad={imageLoader}
+          className='w-[20%] h-[20%] m-auto my-5'
+        />
+      ))}
+    </div>
     </div>
   )
 }

@@ -8,7 +8,6 @@ export function ProductCard({ brand, category, price, id }) {
     >
       <td className="p-2 text-center border border-gray-300">{id}</td>
       <td className="p-2 text-blue-600 hover:underline">
-        {/* Add Link here and keep the data-testid="brand" on Link tag */}
         <Link to={`/some-path/${id}`} data-testid="brand">
           {brand}
         </Link>

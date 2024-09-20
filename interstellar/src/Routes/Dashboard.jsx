@@ -33,8 +33,8 @@ function Dashboard() {
           Logout
         </button>
         <p className="text-lg">
-          Token: {login.token}
-          <b data-testid="user-token" className="ml-2 text-indigo-600"></b>
+          Token:
+          <b data-testid="user-token" className="ml-2 text-indigo-600">{login.token}</b>
         </p>
       </div>
       <div className="mt-8 flex justify-center">

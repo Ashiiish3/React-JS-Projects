@@ -18,7 +18,14 @@ export function AllRoutes() {
         }
       ></Route>
       <Route path={"/login"} element={<Login />}></Route>
-      <Route path={"/some-path/:id"} element={<SingleProductPage />}></Route>
+      <Route
+        path={"/some-path/:id"}
+        element={
+          <PrivateRoute>
+            <SingleProductPage />
+          </PrivateRoute>
+        }
+      ></Route>
       <Route path={"*"} element={<h1>Page Note Found</h1>}></Route>
     </Routes>
   );
