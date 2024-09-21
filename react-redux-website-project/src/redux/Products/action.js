@@ -8,7 +8,7 @@ import {
 export const getData = (dispatch) => {
   dispatch({ type: Product_Data_Request });
   axios
-    .get(`https://fakestoreapi.com/products`)
+    .get(`http://localhost:3000/Products`)
     .then((res) => {
       dispatch({ type: Product_Request_Successful, payload: res.data });
     })

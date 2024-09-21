@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Login_failed, Login_Request, Login_Successful } from "../redux/actionType";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const {isLoading, isError} = useSelector((data) => data.AuthReducer);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const postData = (userData) => {
     dispatch({type: Login_Request})
     axios
       .post(`https://reqres.in/api/login`, userData)
       .then((res) => {
         dispatch({type: Login_Successful, payload: res.data.token})
-        console.log(res.data.token)
+        alert("You are login successfully.")
+        navigate('/products')
     })
       .catch((err) => {
         dispatch({type: Login_failed})
+        alert('Please Enter correct Email and Password.')
         console.log(err)
     });
   };
