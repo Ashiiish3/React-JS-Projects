@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+import { getData } from '../redux/Products/action'
+import { useDispatch } from 'react-redux'
 
 export default function AddProduct() {
   const ProductObj = {
@@ -10,13 +12,14 @@ export default function AddProduct() {
     price: "",
     description: ""
   }
+  const dispatch = useDispatch();
   const [productData, setProductData] = useState(ProductObj)
   const {image, title, category, price, description} = productData
-  const PostProductData = (event) => {
+  const PostProductData = async (event) => {
     event.preventDefault()
     try {
-      let response = axios.post(`http://localhost:3000/Products`, productData)
-      console.log(response)
+      await axios.post(`http://localhost:3000/Products`, productData)
+      dispatch(getData)
     } catch (error) {
       console.log(error)
     }

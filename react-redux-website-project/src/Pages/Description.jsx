@@ -7,7 +7,7 @@ export default function Description() {
   const [descriptionData, setDescriptionData] = useState({});
   const getDataFromId = () => {
     axios
-      .get(`https://fakestoreapi.com/products/${id}`)
+      .get(`http://localhost:3000/Products/${id}`)
       .then((res) => setDescriptionData(res.data))
       .catch((err) => console.log(err));
   };

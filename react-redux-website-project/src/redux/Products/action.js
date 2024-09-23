@@ -5,10 +5,12 @@ import {
   Product_Request_Successful,
 } from "../actionType";
 
-export const getData = (dispatch) => {
+export const getData = (paramObj) => (dispatch) => {
   dispatch({ type: Product_Data_Request });
   axios
-    .get(`http://localhost:3000/Products`)
+    .get(`http://localhost:3000/Products`, {
+      params: paramObj.params
+    })
     .then((res) => {
       dispatch({ type: Product_Request_Successful, payload: res.data });
     })
