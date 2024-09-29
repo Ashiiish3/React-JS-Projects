@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 const Form = ({ getData, productId, setproductId, updatePrice, setupdatePrice, updateAllValues, setupdateAllValues }) => {
   let [searchParams, setSearchParams] = useSearchParams();
-  const [order, setOrder] = useState("")
+  const [order, setOrder] = useState(null)
   const [filterCategory, setFilterCategory] = useState("")
   useEffect(() => {
     setSearchParams({ order, filterCategory })
@@ -25,11 +25,11 @@ const Form = ({ getData, productId, setproductId, updatePrice, setupdatePrice, u
     event.preventDefault();
     const PostData = async () => {
       try {
-        const response = await axios.post("https://to-do-list-json-server-5spg.onrender.com/product", {
+        await axios.post("https://to-do-list-json-server-5spg.onrender.com/product", {
           image: formData.image,
           title: formData.title,
           category: formData.category,
-          price: formData.price,
+          price: Number(formData.price),
         });
         formData.image = ""
         formData.title = ""
@@ -46,8 +46,8 @@ const Form = ({ getData, productId, setproductId, updatePrice, setupdatePrice, u
   const updateOnlyPrice = async (event) => {
     event.preventDefault()
     try {
-      let response = await axios.patch(`https://to-do-list-json-server-5spg.onrender.com/product/${productId}`, {
-        "price": updatePrice
+      await axios.patch(`https://to-do-list-json-server-5spg.onrender.com/product/${productId}`, {
+        "price": Number(updatePrice)
       })
       updateAllValues.image = ""
       updateAllValues.title = ""
@@ -63,11 +63,11 @@ const Form = ({ getData, productId, setproductId, updatePrice, setupdatePrice, u
   const updateAllProducts = async (event) => {
     event.preventDefault()
     try {
-      let response = await axios.put(`https://to-do-list-json-server-5spg.onrender.com/product/${productId}`, {
+      await axios.put(`https://to-do-list-json-server-5spg.onrender.com/product/${productId}`, {
         "image": updateAllValues.image,
         "title": updateAllValues.title,
         "category": updateAllValues.category,
-        "price": updatePrice
+        "price": Number(updatePrice)
       })
       updateAllValues.image = ""
       updateAllValues.title = ""
@@ -144,29 +144,29 @@ const Form = ({ getData, productId, setproductId, updatePrice, setupdatePrice, u
       <hr className="mt-4 mb-3" />
       <div className="my-4">
         <h4 className="text-xl font-semibold mb-2">Sort Based On Price</h4>
-        <button id="sort-low-to-high" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200" value={"asc"} onClick={(e) => setOrder(e.target.value)}>
+        <button id="sort-low-to-high" name="sort" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200" value={"asc"} onClick={(e) => setOrder(e.target.value)}>
           Sort Low To High
         </button>
-        <button id="sort-high-to-low" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200 mt-2" value={"desc"} onClick={(e) => setOrder(e.target.value)}>
+        <button id="sort-high-to-low" name="sort" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200 mt-2" value={"desc"} onClick={(e) => setOrder(e.target.value)}>
           Sort High To Low
         </button>
       </div>
       <hr className="mt-4 mb-3" />
       <div className="my-4">
         <h4 className="text-xl font-semibold mb-2">Filter Based On Category</h4>
-        <button id="filter-Food" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200" onClick={()=>setFilterCategory("Food")}>
+        <button id="filter-Food" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200" value={"Food"} onClick={(e)=>setFilterCategory(e.target.value)}>
           Food
         </button>
-        <button id="filter-Electronics" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200 mt-2" onClick={()=>setFilterCategory("Electronics")}>
+        <button id="filter-Electronics" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200 mt-2" value={"Electronics"} onClick={(e)=>setFilterCategory(e.target.value)}>
           Electronics
         </button>
-        <button id="filter-Shoes" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200 mt-2" onClick={()=>setFilterCategory("Shoes")}>
+        <button id="filter-Shoes" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200 mt-2" value={"Shoes"} onClick={(e)=>setFilterCategory(e.target.value)}>
           Shoes
         </button>
-        <button id="filter-Clothes" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200 mt-2" onClick={()=>setFilterCategory("Clothes")}>
+        <button id="filter-Clothes" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200 mt-2" value={"Clothes"} onClick={(e)=>setFilterCategory(e.target.value)}>
           Clothes
         </button>
-        <button id="filter-Furniture" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200 mt-2" onClick={()=>setFilterCategory("Furniture")}>
+        <button id="filter-Furniture" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200 mt-2" value={"furniture"} onClick={(e)=>setFilterCategory(e.target.value)}>
           Furniture
         </button>
       </div>

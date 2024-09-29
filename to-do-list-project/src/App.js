@@ -27,11 +27,11 @@ function App() {
     try {
       let res = await axios.get("https://to-do-list-json-server-5spg.onrender.com/product", {
         params: {
-          _limit: "10",
+          _limit: 10,
           _page: page,
+          category: filterCategory || null,
           _sort: "price",
-          _order: order || null, 
-          category: filterCategory || null
+          _order: order
         }
       })
       setLoading(false)
@@ -51,7 +51,7 @@ function App() {
   }, [page, searchParams])
   const deleteProduct = async (id) => {
     try {
-      let response = await axios.delete(`https://to-do-list-json-server-5spg.onrender.com/product/${id}`)
+      await axios.delete(`https://to-do-list-json-server-5spg.onrender.com/product/${id}`)
       alert("This Product has been deleted.")
       getData()
     } catch (error) {
