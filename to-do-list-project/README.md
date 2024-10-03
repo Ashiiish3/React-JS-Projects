@@ -1,3 +1,29 @@
+## To do List Project
+
+### Introduction
+Hello Everyone! This documentation provides an overview of Boat Website. The Boat website clone is a fully responsive and modern e-commerce platform designed to mimic the look and functionality of the official Boat website. It showcases various electronic products such as headphones, speakers, wearables, and other accessories. The clone features an interactive product grid, advanced filtering options, detailed product pages with reviews, and a dynamic cart system. Built with React and styled using Tailwind CSS, the platform provides a smooth and seamless shopping experience across all devices. Features like smooth scrolling, responsive navigation, and theme customization have also been integrated to enhance user interaction.
+
+### Project Details
+- Project Link: boat-lifestyle.com (https://to-do-list-project-kohl.vercel.app/?order=null&filterCategory=)
+- Project Duration: 1 Days
+- Usage Tools: React js, Tailwind CSS, HTML 5, CSS 3, Javascript, JSON-Server
+
+### Features
+1. User-friendly Interface:
+   - Designed with a clean and responsive UI using React and Tailwind CSS, ensuring smooth interaction across devices.
+2. Task Management:
+   - Allows users to add, edit, and delete tasks, providing an efficient way to manage to-dos.
+3. Real-time Updates:
+   - Tasks update dynamically without needing a page reload, offering a seamless user experience.
+
+### Screenshots
+Here are some screenshots of the Boat website for you to preview.
+
+![To-do-list](https://github.com/user-attachments/assets/6796cdee-1a18-4790-956a-833bb48f7ab2)
+![to-do-list-2](https://github.com/user-attachments/assets/07e3c440-d591-496f-a87f-22afc6460972)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
