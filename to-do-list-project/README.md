@@ -1,10 +1,10 @@
 ## To do List Project
 
 ### Introduction
-Hello Everyone! This documentation provides an overview of Boat Website. The Boat website clone is a fully responsive and modern e-commerce platform designed to mimic the look and functionality of the official Boat website. It showcases various electronic products such as headphones, speakers, wearables, and other accessories. The clone features an interactive product grid, advanced filtering options, detailed product pages with reviews, and a dynamic cart system. Built with React and styled using Tailwind CSS, the platform provides a smooth and seamless shopping experience across all devices. Features like smooth scrolling, responsive navigation, and theme customization have also been integrated to enhance user interaction.
+Hello Everyone! This is a responsive and user-friendly to-do list application designed to help users manage tasks efficiently. Users can add, edit, and delete tasks while marking them as completed once done. It also includes real-time updates, enabling users to interact with the task list without needing to reload the page.
 
 ### Project Details
-- Project Link: boat-lifestyle.com (https://to-do-list-project-kohl.vercel.app/?order=null&filterCategory=)
+- Project Link: To do List Project (https://to-do-list-project-kohl.vercel.app/?order=null&filterCategory=)
 - Project Duration: 1 Days
 - Usage Tools: React js, Tailwind CSS, HTML 5, CSS 3, Javascript, JSON-Server
 
