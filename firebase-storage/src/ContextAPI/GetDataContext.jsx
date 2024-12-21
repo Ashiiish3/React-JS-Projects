@@ -21,5 +21,5 @@ export function GetDataContextProvider({children}){
             getDataFromFirebase()
         }).catch((err)=>console.log(err))
     }
-    return <GetDataContext.Provider value={{getDataFromFirebase, productData, setProductData, DeleteProductFromFirebase}} >{children}</GetDataContext.Provider>
+    return <GetDataContext.Provider value={{getDataFromFirebase, productData, setProductData, DeleteProductFromFirebase}}>{children}</GetDataContext.Provider>
 }

@@ -8,7 +8,6 @@ function App() {
      <Counter />
      <hr />
      <Products />
-
     </div>
   );
 }
