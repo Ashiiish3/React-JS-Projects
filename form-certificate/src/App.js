@@ -1,10 +1,12 @@
-import logo from './logo.svg';
+import Allroutes from './Allroutes';
 import './App.css';
+import Certificate from './components/Certificate';
+import Form from './components/Form';
 
 function App() {
   return (
     <div className="App">
-      sdf
+      <Allroutes />
     </div>
   );
 }
