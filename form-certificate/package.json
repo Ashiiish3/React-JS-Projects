@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
+    "html-to-image": "^1.11.11",
+    "html-to-pdf": "^0.1.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.1",
@@ -33,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
   }
 }
